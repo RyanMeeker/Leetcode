@@ -1,0 +1,34 @@
+class Solution(object):
+    
+    def insert(self, sorted, nums1, nums2, num1Counter, num2Counter, count, total):
+        if(count < total):            
+            if nums1[num1Counter] < nums2[num2Counter] and nums1[num1Counter] != 0:
+                # add num1
+                print(nums1[num1Counter])
+                sorted.append(nums1[num1Counter])
+                num1Counter += 1
+            else:
+                #add num2
+                print(nums2[num2Counter])
+                sorted.append(nums2[num2Counter])
+                num2Counter += 1
+            count += 1
+            
+            return self.insert(sorted, nums1, nums2, num1Counter, num2Counter, count, total)
+
+        else:
+            return sorted
+
+    def merge(self, nums1, m, nums2, n):
+        sorted = []
+        num1Counter = 0
+        num2Counter = 0
+        count = 0
+        total = m + n
+
+        s = self.insert(sorted, nums1, nums2, num1Counter, num2Counter, count, total)
+        print("s:", s)
+        sw = s[:]
+        print(sw)
+        return s
+# TODO: did not work
